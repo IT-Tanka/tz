@@ -1,4 +1,3 @@
-
 <script setup lang="ts">
 import { useForm, useField } from 'vee-validate';
 import * as yup from 'yup';
@@ -11,7 +10,7 @@ const schema = yup.object({
     .string()
     .matches(
       /^\+?\d{10,15}$/,
-      'Введите корректный номер телефона (10-15 цифр, возможно с +)'
+      'Введите корректный номер'
     )
     .required('Введите номер телефона'),
 });
@@ -22,8 +21,8 @@ const { handleSubmit } = useForm({
 });
 
 // Подключаем поля
-const { value: name, errorMessage: nameError } = useField('name');
-const { value: phone, errorMessage: phoneError } = useField('phone');
+const { value: name, errorMessage: nameError, resetField: resetName} = useField('name');
+const { value: phone, errorMessage: phoneError, resetField: resetPhone} = useField('phone');
 
 // Pinia store для уведомлений
 const notificationStore = useNotificationStore();
@@ -43,8 +42,9 @@ const onSubmit = handleSubmit(async (values) => {
   notificationStore.addNotification({
     message: `Спасибо, ${values.name}! Мы свяжемся с вами по номеру ${values.phone}. Ваши данные: ${JSON.stringify(result)}`,
   });
-
-  });
+  resetName();
+  resetPhone();
+});
 </script>
 
 <template>
