@@ -52,8 +52,8 @@ const onSubmit = handleSubmit(async (values) => {
     class="grid grid-cols-1  md:grid-cols-2 gap-y-[29px] md:gap-y-[55px]  md:gap-x-[45px] lg:w-[503px] max-w-[545px] w-full">
     <div class="w-full sm:w-[225px] rounded-[37px] relative">
       <input v-model="name" id="name" name="name" placeholder="Ваше имя"
-        class="w-full px-4 py-4 rounded-[37px] text-[18px] leading-[140%] font-sans text-gray-700 pl-[34px] mb-[15px] md:mb-0" />
-      <span v-if="nameError" class="text-red-500 text-sm absolute left-0 bottom-[-20px]">{{ nameError }}</span>
+        class="w-full px-4 py-4 rounded-[37px] text-[18px] leading-[140%] font-sans text-gray-700 pl-[34px]" />
+      <span v-if="nameError" class="text-red-500 text-sm absolute left-0  bottom-[-20px] ">{{ nameError }}</span>
     </div>
 
     <div class="w-full sm:w-[225px] rounded-[37px] relative">
